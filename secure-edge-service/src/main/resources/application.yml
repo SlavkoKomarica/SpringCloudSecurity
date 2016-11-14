@@ -1,7 +1,3 @@
-server:
-  port: 9191
-  context-path: /auth-client
-
 security:
   enable-csrf: false
   oauth2:

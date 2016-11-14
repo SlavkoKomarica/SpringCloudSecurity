@@ -15,29 +15,29 @@
  */
 package com.example;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-import java.security.Principal;
-
-@EnableAutoConfiguration
-@Configuration
+@SpringBootApplication
 @EnableOAuth2Sso
-@RestController
-public class AuthClientApplication {
-
-    @RequestMapping("/")
-    public String home(Principal user) {
-        return "Hello " + user == null ? "null" : user.getName();
-    }
+@EnableZuulProxy
+@EnableDiscoveryClient
+public class AuthClientApplication extends WebSecurityConfigurerAdapter {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder(AuthClientApplication.class).run(args);
     }
 
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
+        http.antMatcher("/**")
+                .authorizeRequests()
+                .antMatchers("/microservice-open/**","/me").permitAll()
+                .anyRequest().authenticated().and().csrf().disable();
+    }
 }

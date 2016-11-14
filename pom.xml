@@ -26,7 +26,10 @@
 
     <modules>
         <module>cloud-autorization-server</module>
-        <module>cloud-autorization-client</module>
+        <module>secure-edge-service</module>
+        <module>eurekaserver</module>
+        <module>microservice-open</module>
+        <module>microservice-secure</module>
         <module>simple-auth-server</module>
         <module>simple-auth-client</module>
     </modules>
