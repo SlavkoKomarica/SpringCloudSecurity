@@ -19,9 +19,14 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 		return user;
 	}
 
-	
+	@RequestMapping("/user/name")
+	public String me(Principal user) {
+		return user.getName();
+	}
+
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		 http.antMatcher("/user").authorizeRequests().anyRequest().authenticated();
-	}	
+		http.antMatcher("/user/**").authorizeRequests().anyRequest()
+				.authenticated();
+	}
 }

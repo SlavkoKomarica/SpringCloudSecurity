@@ -80,10 +80,11 @@ public class AuthorizationFilter implements Filter {
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("authorization", authorizationHeader);
+		logger.info("Added header: "+authorizationHeader);
 		
 		HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
 
-		ResponseEntity<String> response = restTemplate.exchange("http://localhost:8181/uaa/me", HttpMethod.GET, entity, String.class);
+		ResponseEntity<String> response = restTemplate.exchange("http://localhost:8181/uaa/user/name", HttpMethod.GET, entity, String.class);
 		if(!response.getStatusCode().equals(HttpStatus.OK)){
 			throw new RuntimeException("Unable to get authenticated user. Response status: "+response.getStatusCode());
 		}
