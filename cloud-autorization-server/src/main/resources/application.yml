@@ -7,16 +7,12 @@ security:
     password: password
   enable-csrf: false
   ignored: /resources/**
-
-spring:
-  jpa:
-    show_sql: false
-    database: H2
-    hibernate:
-      ddl-auto: update
-    datasource:
-      url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
-      initialize: true
+  oauth2:
+    client:
+      client-id: acme
+      client-secret: acmesecret
+      scope: read,write
+      auto-approve-scopes: '.*'
 
 logging:
   level:

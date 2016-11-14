@@ -3,7 +3,7 @@ spring:
     name: microservice-secure
 
 server:
-  port: 0
+  port: 10001
 
 eureka:
   client:
@@ -14,10 +14,3 @@ eureka:
   instance:
       instance-id: ${spring.application.name}:${random.int}
       preferIpAddress: true
-
-#security:
-#  oauth2:
-#    resource:
-#      userInfoUri: http://localhost:8181/uaa/user
-#    client:
-#      client-id: acme

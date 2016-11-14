@@ -3,7 +3,7 @@ spring:
     name: microservice-open
 
 server:
-  port: 0
+  port: 10002
 
 eureka:
   client:

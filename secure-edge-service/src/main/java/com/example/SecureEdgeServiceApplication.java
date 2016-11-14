@@ -27,10 +27,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableOAuth2Sso
 @EnableZuulProxy
 @EnableDiscoveryClient
-public class AuthClientApplication extends WebSecurityConfigurerAdapter {
+public class SecureEdgeServiceApplication extends WebSecurityConfigurerAdapter {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(AuthClientApplication.class).run(args);
+        new SpringApplicationBuilder(SecureEdgeServiceApplication.class).run(args);
     }
 
     @Override
