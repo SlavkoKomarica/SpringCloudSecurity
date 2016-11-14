@@ -1,0 +1,23 @@
+server:
+  port: 8181
+  contextPath: /uaa
+
+security:
+  user:
+    password: password
+  enable-csrf: false
+  ignored: /resources/**
+
+spring:
+  jpa:
+    show_sql: false
+    database: H2
+    hibernate:
+      ddl-auto: update
+    datasource:
+      url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+      initialize: true
+
+logging:
+  level:
+    org.springframework.security: DEBUG

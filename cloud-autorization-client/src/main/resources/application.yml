@@ -1,0 +1,14 @@
+server:
+  port: 9191
+  context-path: /auth-client
+
+security:
+  enable-csrf: false
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8181/uaa/user
+    client:
+      accessTokenUri: http://localhost:8181/uaa/oauth/token
+      userAuthorizationUri: http://localhost:8181/uaa/oauth/authorize
+      clientId: acme
+      clientSecret: acmesecret
