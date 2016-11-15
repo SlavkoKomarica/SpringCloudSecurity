@@ -17,7 +17,12 @@ public class AuthorizationServerConfig {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER");
+                .withUser("user").password("user").roles("USER");
+
+        auth.
+                inMemoryAuthentication()
+                .withUser("admin").password("admin").roles("ADMIN");
+
     }
 
 }

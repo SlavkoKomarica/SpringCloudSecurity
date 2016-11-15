@@ -37,7 +37,7 @@ public class SecureEdgeServiceApplication extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/microservice-open/**","/me").permitAll()
+                .antMatchers("/microservice-open/**","/microservice-selfsecured/**","/me").permitAll()
                 .anyRequest().authenticated().and().csrf().disable();
     }
 }

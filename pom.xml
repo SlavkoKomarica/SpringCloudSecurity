@@ -30,6 +30,7 @@
         <module>eurekaserver</module>
         <module>microservice-open</module>
         <module>microservice-secure</module>
+        <module>microservice-selfsecured</module>
         <module>simple-auth-server</module>
         <module>simple-auth-client</module>
     </modules>

@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: microservice-selfsecured
+
+server:
+  port: 10003
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    healthcheck:
+      enabled: true
+  instance:
+      instance-id: ${spring.application.name}:${random.int}
+      preferIpAddress: true
+
+security:
+  enable-csrf: false
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8181/uaa/user
+    client:
+      accessTokenUri: http://localhost:8181/uaa/oauth/token
+      userAuthorizationUri: http://localhost:8181/uaa/oauth/authorize
+      clientId: acme
+      clientSecret: acmesecret
